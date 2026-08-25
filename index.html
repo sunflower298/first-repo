@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="王子睿 · 华北水利水电大学计算机科学与技术专业 2026 级本科在读 · 个人简历">
+<meta name="theme-color" content="#09090b">
+<title>王子睿｜个人简历 · Bento</title>
+<!--
+  说明：为满足「无外链、国内网络直接打开」，本页未引用 CDN，全部内联实现等价能力：
+  ① Tailwind CSS → 内置 zinc 色板 + 工具类风格设计系统（bg-zinc-900/90、border-zinc-800、rounded-3xl 语义一致）
+  ② Lucide Icons → 内联 Lucide 风格 SVG 图标集（stroke 线性图标）
+  ③ Vanilla-Tilt.js → 内联同等 3D 视差引擎，读取相同的 data-tilt / data-tilt-max / data-tilt-speed / data-tilt-glare 属性
+  如需换成真实库，可加：
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
+-->
+<style>
+/* ============ 设计令牌（Tailwind zinc 语义） ============ */
+:root{
+  --brand:#e10622;
+  --brand-2:#ffc90e;
+  --blue:#2d5bd6;
+  --grad:linear-gradient(120deg,#e10622 0%,#ff5a00 50%,#ffc90e 100%);
+  --grad-btn:linear-gradient(120deg,#e10622,#ff5a00);
+  /* zinc 色板 */
+  --zinc-950:#09090b;
+  --zinc-900:rgba(24,24,27,.9);   /* bg-zinc-900/90 */
+  --zinc-800:#27272a;             /* border-zinc-800 */
+  --zinc-700:#3f3f46;
+  --zinc-400:#a1a1aa;
+  --zinc-300:#d4d4d8;
+  --bg:var(--zinc-950);
+  --card:var(--zinc-900);
+  --card-line:#27272a;
+  --text:#fafafa;
+  --text-2:#a1a1aa;
+  --text-3:#71717a;
+  --chip-bg:rgba(225,6,34,.13);
+  --chip-fg:#ff8fa0;
+  --header-bg:rgba(9,9,11,.75);
+  --ring:rgba(255,90,0,.55);
+  --shadow:0 24px 60px -20px rgba(0,0,0,.7);
+  --checker:rgba(255,201,14,.5);
+  --mono:"SF Mono","Cascadia Code",Consolas,"JetBrains Mono",Menlo,monospace;
+  color-scheme:dark;
+}
+[data-theme="light"]{
+  --brand:#d40425;
+  --brand-2:#c68d00;
+  --grad:linear-gradient(120deg,#d40425 0%,#ff5a00 55%,#e6a900 100%);
+  --grad-btn:linear-gradient(120deg,#d40425,#ff5a00);
+  --bg:#f4f4f5;
+  --card:rgba(255,255,255,.92);
+  --card-line:#e4e4e7;
+  --text:#18181b;
+  --text-2:#52525b;
+  --text-3:#a1a1aa;
+  --chip-bg:rgba(212,4,37,.08);
+  --chip-fg:#c30523;
+  --header-bg:rgba(244,244,245,.78);
+  --ring:rgba(212,4,37,.45);
+  --shadow:0 24px 60px -24px rgba(24,24,27,.25);
+  --checker:rgba(212,4,37,.35);
+  color-scheme:light;
+}
+
+/* ============ 基础 ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;
+  -webkit-font-smoothing:antialiased;font-size:15px;
+  transition:background-color .25s ease,color .25s ease;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(1000px 520px at 85% -10%,rgba(225,6,34,.13),transparent 60%),
+    radial-gradient(900px 520px at -10% 30%,rgba(255,201,14,.06),transparent 55%),
+    radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:auto,auto,26px 26px;
+}
+[data-theme="light"] body::before{
+  background:
+    radial-gradient(1000px 520px at 85% -10%,rgba(212,4,37,.09),transparent 60%),
+    radial-gradient(900px 520px at -10% 30%,rgba(198,141,0,.07),transparent 55%),
+    radial-gradient(rgba(24,24,27,.05) 1px,transparent 1px);
+  background-size:auto,auto,26px 26px;
+}
+::selection{background:var(--chip-bg);color:var(--chip-fg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+svg{display:block}
+:focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:6px}
+.mono{font-family:var(--mono)}
+.skip{position:absolute;left:-9999px;top:8px;z-index:99;background:var(--card);padding:8px 16px;border-radius:10px}
+.skip:focus{left:8px}
+
+/* ============ 顶部导航 ============ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:50;height:64px;
+  background:var(--header-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--card-line);
+}
+.site-header::after{
+  content:'';position:absolute;left:0;right:0;bottom:-3px;height:3px;
+  background:var(--grad);opacity:.9;pointer-events:none;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:16px}
+.brand-hex{
+  width:34px;height:34px;clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%);
+  background:var(--grad);display:grid;place-items:center;color:#0a0f1e;
+  font-weight:800;font-size:16px;box-shadow:0 0 14px rgba(255,201,14,.4);
+}
+.brand small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--text-3);line-height:1.2;letter-spacing:.08em}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+  border:1px solid var(--card-line);background:var(--card);color:var(--text-2);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.icon-btn:hover{color:var(--brand);border-color:var(--ring);transform:translateY(-1px)}
+
+/* ============ 通用组件 ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:12px;
+  font-size:14px;font-weight:600;transition:transform .2s ease,box-shadow .2s ease;
+}
+.btn svg{width:16px;height:16px}
+.btn-primary{background:var(--grad-btn);color:#fff;font-weight:700;box-shadow:0 8px 26px -8px rgba(225,6,34,.55)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -8px rgba(225,6,34,.7)}
+.btn-ghost{border:1px solid var(--card-line);background:var(--card);color:var(--text-2)}
+.btn-ghost:hover{transform:translateY(-2px);color:var(--brand);border-color:var(--ring)}
+
+.chip{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;
+  background:var(--chip-bg);color:var(--chip-fg);font-size:12.5px;font-weight:500;
+  border:1px solid rgba(225,6,34,.16);white-space:nowrap;
+}
+.chip svg{width:13px;height:13px}
+.chip-line{border:1px solid var(--card-line);background:var(--card);color:var(--text-2)}
+.chip-gold{background:rgba(255,201,14,.12);color:var(--brand-2);border:1px solid rgba(255,201,14,.28)}
+
+/* 渐变文字 */
+.g-text{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+@supports not (-webkit-background-clip:text){.g-text{color:var(--brand)}}
+
+/* ============ Bento Grid（3 列不对称栅格） ============ */
+.bento{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  padding:124px 0 60px;
+}
+.bento-card{
+  background:var(--card);border:1px solid var(--card-line);border-radius:24px;
+  padding:28px;position:relative;overflow:hidden;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 1px 2px rgba(0,0,0,.3);
+  transform-style:preserve-3d;will-change:transform;
+}
+[data-theme="light"] .bento-card{box-shadow:0 1px 3px rgba(24,24,27,.06)}
+.col-2{grid-column:span 2}
+.col-3{grid-column:span 3}
+@media (max-width:980px){
+  .bento{grid-template-columns:1fr;padding-top:110px}
+  .col-2,.col-3{grid-column:auto}
+}
+/* 3D 视差反光层 */
+.tilt-glare{
+  position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  opacity:0;transition:opacity .3s ease;
+}
+.bento-card:hover .tilt-glare{opacity:1}
+
+/* 卡片通用头部 */
+.t-kicker{
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.18em;
+  color:var(--brand-2);text-transform:uppercase;margin-bottom:10px;
+  text-shadow:0 0 12px rgba(255,201,14,.4);
+}
+.t-title{font-size:20px;font-weight:800;letter-spacing:.01em;margin-bottom:4px}
+.t-sub{font-size:13px;color:var(--text-3)}
+
+/* 入场动效 */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .28s ease,transform .28s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============ 主卡（2 列） ============ */
+.hero-tile .hero-name{
+  font-size:clamp(38px,5.4vw,58px);font-weight:900;line-height:1.12;letter-spacing:.01em;
+  filter:drop-shadow(0 0 18px rgba(225,6,34,.25));
+}
+.hero-role{font-size:16px;font-weight:600;color:var(--text-2);margin-top:12px}
+.hero-role b{color:var(--text)}
+.hero-intro{max-width:600px;color:var(--text-2);font-size:14px;margin-top:14px;text-align:justify}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:22px}
+.hero-hex{
+  position:absolute;top:24px;right:24px;width:52px;height:52px;
+  clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%);
+  background:var(--grad);display:grid;place-items:center;color:#0a0f1e;
+  font-weight:800;font-size:20px;opacity:.9;
+  box-shadow:0 0 20px rgba(255,201,14,.35);
+}
+@media (max-width:640px){.hero-hex{display:none}}
+
+/* ============ 战绩卡（1 列） ============ */
+.stat-item{padding:14px 0;border-bottom:1px dashed var(--card-line)}
+.stat-item:last-child{border-bottom:none}
+.stat-num{font-size:32px;font-weight:900;line-height:1.1;font-family:var(--mono)}
+.stat-unit{font-size:13px;font-weight:600;color:var(--brand-2);margin-left:6px}
+.stat-text{font-size:12.5px;color:var(--text-2);margin-top:4px}
+
+/* ============ 主打项目卡（2 列） ============ */
+.feat-body{display:flex;gap:24px;align-items:center;margin-top:14px}
+.feat-info{flex:1;min-width:0}
+.feat-visual{flex:none}
+.blob{
+  width:128px;height:128px;border-radius:32px;background:var(--grad);
+  display:grid;place-items:center;color:#fff;
+  box-shadow:0 14px 40px -10px rgba(225,6,34,.5);
+}
+.blob svg{width:52px;height:52px}
+.feat-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px}
+.feat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.feat-result{display:flex;gap:9px;font-size:13.5px;color:var(--text-2);margin-top:14px}
+.feat-result svg{flex:none;width:15px;height:15px;margin-top:5px;color:var(--brand)}
+@media (max-width:640px){
+  .feat-body{flex-direction:column-reverse;align-items:flex-start}
+}
+
+/* ============ 技能聚合卡（1 列） ============ */
+.skill-mini{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase;margin:16px 0 8px}
+.skill-mini.first{margin-top:0}
+.skill-note{
+  display:flex;gap:9px;align-items:flex-start;margin-top:16px;padding:12px 14px;
+  border:1px solid var(--card-line);border-radius:14px;
+  background:linear-gradient(135deg,rgba(225,6,34,.1),rgba(255,201,14,.07));
+  font-size:12.5px;color:var(--text-2);
+}
+.skill-note svg{flex:none;width:15px;height:15px;margin-top:4px;color:var(--brand)}
+
+/* ============ 经历卡（满行 3 列） ============ */
+.xp-row{display:grid;grid-template-columns:150px 1fr;gap:26px;margin-top:18px}
+.xp-rail{position:relative;font-family:var(--mono);font-size:13px;color:var(--brand-2)}
+.xp-rail::before{
+  content:'';position:absolute;left:5px;top:34px;bottom:0;width:1px;
+  background:linear-gradient(180deg,var(--brand),transparent);
+}
+.xp-rail .dot{
+  width:11px;height:11px;border-radius:50%;background:var(--brand);
+  box-shadow:0 0 12px rgba(225,6,34,.8);margin-top:6px;
+}
+.xp-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px}
+.xp-role{font-size:17px;font-weight:800}
+.xp-org{font-size:13.5px;color:var(--brand);font-weight:600}
+.xp-bullets{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
+.xp-bullets li{display:flex;gap:9px;font-size:13.5px;color:var(--text-2)}
+.xp-bullets li svg{flex:none;width:14px;height:14px;margin-top:5px;color:var(--brand)}
+@media (max-width:760px){
+  .xp-row{grid-template-columns:1fr}
+  .xp-bullets{grid-template-columns:1fr}
+}
+
+/* ============ 教育 / MBTI / 爱好卡（1 列） ============ */
+.edu-school{font-size:17px;font-weight:800}
+.edu-major{font-size:13.5px;color:var(--text-2);margin-top:4px}
+.edu-time{font-size:12.5px;color:var(--text-3);font-family:var(--mono);margin-top:6px}
+.edu-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.mbti-big{
+  font-size:44px;font-weight:900;font-family:var(--mono);line-height:1.1;
+  filter:drop-shadow(0 0 16px rgba(225,6,34,.3));
+}
+.mbti-desc{font-size:13.5px;color:var(--text-2);margin-top:12px}
+
+/* ============ 页脚 / 浮动件 ============ */
+.site-footer{
+  border-top:1px solid var(--card-line);padding:46px 0 48px;text-align:center;
+  color:var(--text-3);font-size:13px;
+}
+.site-footer::before{
+  content:'';display:block;height:4px;max-width:1080px;margin:0 auto 22px;border-radius:2px;opacity:.5;
+  background-image:conic-gradient(var(--checker) 25%,transparent 0 50%,var(--checker) 0 75%,transparent 0);
+  background-size:8px 8px;
+}
+.hex-sm{
+  width:40px;height:40px;clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%);
+  background:var(--grad);display:grid;place-items:center;color:#0a0f1e;
+  font-weight:800;font-size:16px;margin:0 auto 16px;box-shadow:0 0 16px rgba(255,201,14,.35);
+}
+.to-top{
+  position:fixed;right:24px;bottom:24px;z-index:40;width:44px;height:44px;border-radius:14px;
+  background:var(--grad-btn);color:#fff;display:grid;place-items:center;
+  box-shadow:0 10px 26px -8px rgba(225,6,34,.55);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease;
+}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top svg{width:18px;height:18px}
+.toast{
+  position:fixed;left:50%;bottom:30px;transform:translate(-50%,12px);z-index:60;
+  background:rgba(24,24,27,.95);color:#fafafa;padding:10px 20px;border-radius:12px;font-size:13.5px;
+  border:1px solid var(--card-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease;
+  box-shadow:0 14px 34px -10px rgba(0,0,0,.5);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.print-only{display:none}
+
+/* ============ 无障碍：减少动效 ============ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important}
+  .bento-card{transform:none!important}
+}
+
+/* ============ 打印 ============ */
+@media print{
+  :root,:root[data-theme="light"]{
+    --bg:#fff;--card:#fff;--card-line:#e4e4e7;
+    --text:#18181b;--text-2:#52525b;--text-3:#a1a1aa;
+    --brand:#d40425;--brand-2:#c68d00;
+    --grad:linear-gradient(120deg,#d40425,#ff5a00,#e6a900);
+    --grad-btn:linear-gradient(120deg,#d40425,#ff5a00);
+    --chip-bg:#fdeef0;--chip-fg:#c30523;--header-bg:#fff;
+    color-scheme:light;
+  }
+  body::before{display:none}
+  .no-print{display:none!important}
+  .print-only{display:block!important}
+  .site-header{position:static}
+  .site-footer::before{display:none}
+  .bento{padding:20px 0;grid-template-columns:1fr}
+  .col-2,.col-3{grid-column:auto}
+  .bento-card{transform:none!important;box-shadow:none!important;border:1px solid #d4d4d8;break-inside:avoid;backdrop-filter:none}
+  .tilt-glare{display:none!important}
+  .hero-hex,.hex-sm{display:none!important}
+  .g-text{background:none;color:#d40425}
+  .hero-name,.stat-num,.mbti-big{filter:none}
+  .reveal{opacity:1!important;transform:none!important}
+  .btn-primary{background:#18181b;color:#fff}
+  a{text-decoration:none;color:inherit}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#hero">跳到主要内容</a>
+
+<header class="site-header no-print">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="回到顶部">
+      <span class="brand-hex" aria-hidden="true">王</span>
+      <span>王子睿<small>个人简历 · BENTO EDITION</small></span>
+    </a>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" title="切换深色 / 浅色模式" aria-label="切换深色 / 浅色模式">
+        <svg class="theme-icon theme-icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="theme-icon theme-icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="icon-btn" id="printBtn" type="button" title="打印 / 导出 PDF" aria-label="打印 / 导出 PDF">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="container"></main>
+
+<footer class="site-footer" id="footer"></footer>
+
+<button class="to-top no-print" id="toTop" type="button" aria-label="返回顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================= 图标（Lucide 风格内联 SVG） ================= */
+const ICONS = {
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>',
+  brief:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+  grad:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg>',
+  user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  ball:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c4.2 4.2 4.2 13.8 0 18M12 3c-4.2 4.2-4.2 13.8 0 18"/></svg>',
+  film:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 5v14M17 5v14M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>',
+  flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-3 4 3 4H4"/></svg>',
+  music:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>'
+};
+
+/* ================= 简历数据（保留全部文字、数据与链接） ================= */
+const resume = {
+  name: '王子睿',
+  title: '计算机科学与技术 · 2026 级本科在读',
+  mbti: 'INFJ',
+  intro: '你好，我是王子睿。华北水利水电大学计算机科学与技术专业 2026 级本科生，暑期曾在当地社会治安综合治理中心担任志愿者，在基层服务一线锻炼了群众接待、档案管理与应急处理能力。性格沉稳细致（INFJ），学习主动性强，期待在技术成长之路上持续精进。业余时间喜欢打篮球、追番，关注 F1 赛事与纯音乐，热爱生活、精力充沛。',
+  heroBadges: ['2026 级本科在读', 'MBTI · INFJ', '志愿服务实践', '沟通协调', '快速学习'],
+  contact: {
+    phone: '13683953916',
+    emailUser: '3216997546',
+    emailDomain: 'qq.com',
+    city: '河南 · 漯河'
+  },
+  stats: [
+    { num: '60+', unit: '天', text: '暑期基层综治志愿服务' },
+    { num: '0', unit: '差错', text: '来访登记与台账录入' },
+    { num: '3+', unit: '类职责', text: '接待登记 · 档案归档 · 台账电子化' }
+  ],
+  featured: {
+    title: '暑期实践 · 综治中心志愿服务',
+    org: '当地社会治安综合治理中心',
+    time: '2026.07 – 2026.08',
+    icon: 'flag',
+    chips: ['群众来访接待', '档案整理归档', '台账电子化', '沟通协调'],
+    results: [
+      '工作细致零差错，获中心工作人员一致好评',
+      '建立规范台账，显著提升信息检索与调阅效率'
+    ]
+  },
+  skills: {
+    general: ['群众来访接待', '沟通协调', '应急处理', '群众工作', '档案管理', '信息录入'],
+    office: ['Word', 'Excel', 'PowerPoint', '电子化台账'],
+    note: '计算机科学与技术 · 本科一年级，程序设计基础等专业课程学习中，正在系统搭建个人技术栈。'
+  },
+  experience: [
+    {
+      role: '志愿服务人员',
+      org: '当地社会治安综合治理中心',
+      time: '2026.07 – 2026.08',
+      bullets: [
+        '协助综治中心工作人员开展群众来访接待与事项登记，日均配合处理群众咨询与登记，工作细致零差错，获中心工作人员一致好评',
+        '负责来访登记、纠纷调解记录等档案的整理归档与电子化录入，建立规范台账，显著提升信息检索与调阅效率',
+        '在基层治理一线锻炼沟通协调、群众工作与应急处理能力，深入理解综治工作流程与多方协作机制'
+      ]
+    }
+  ],
+  education: {
+    school: '华北水利水电大学',
+    major: '计算机科学与技术（本科）',
+    time: '2026.09 – 2030.06（预计毕业）',
+    badges: ['水利部与河南省人民政府共建高校', '2026 级本科在读']
+  },
+  personal: {
+    mbti: 'INFJ',
+    mbtiDesc: '责任心强、细致耐心，善于倾听与共情，具备良好的团队协作与服务意识。',
+    traits: ['学习主动性强', '对新知识接受速度快', '热爱生活', '精力充沛', '可快速融入团队氛围'],
+    hobbies: [
+      { name: '篮球', icon: 'ball' },
+      { name: '动漫 · 追番', icon: 'film' },
+      { name: 'F1 赛车', icon: 'flag' },
+      { name: '纯音乐', icon: 'music' }
+    ]
+  },
+  updated: '2026 年 8 月'
+};
+
+/* ================= 工具函数 ================= */
+const $ = (sel, el) => (el || document).querySelector(sel);
+function el(tag, cls, text){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function store(k, v){ try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+
+/* ================= 主题切换（默认深色） ================= */
+const themeBtn = $('#themeBtn');
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  $('.theme-icon-sun').hidden = t === 'dark';
+  $('.theme-icon-moon').hidden = t === 'light';
+  themeBtn.setAttribute('aria-label', t === 'dark' ? '切换到浅色模式' : '切换到深色模式');
+  store('resume-theme', t);
+}
+applyTheme(load('resume-theme') || 'dark');
+themeBtn.addEventListener('click', () => {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+/* ================= Bento 卡片工厂（挂载 3D Tilt 属性） ================= */
+function tile(id, spanCls){
+  const d = el('div', 'bento-card ' + spanCls);
+  d.id = id;
+  d.setAttribute('data-tilt', '');
+  d.setAttribute('data-tilt-max', '6');
+  d.setAttribute('data-tilt-speed', '400');
+  d.setAttribute('data-tilt-glare', '');
+  d.setAttribute('data-tilt-glare-max', '0.25');
+  return d;
+}
+function kicker(text){
+  return el('div', 't-kicker', text);
+}
+function title(text){
+  return el('h2', 't-title', text);
+}
+
+/* ================= ① 主卡（2 列） ================= */
+function buildHero(){
+  const t = tile('hero', 'col-2 hero-tile');
+  t.appendChild(kicker('01 // PROFILE · 基本信息'));
+  const name = el('h1', 'hero-name g-text', resume.name);
+  const role = el('p', 'hero-role');
+  role.innerHTML = '华北水利水电大学 · <b>计算机科学与技术（本科）</b>';
+  const intro = el('p', 'hero-intro', resume.intro);
+  const badges = el('div', 'hero-badges');
+  resume.heroBadges.forEach(b => badges.appendChild(el('span', 'chip', b)));
+  const actions = el('div', 'hero-actions');
+  const tel = el('a', 'btn btn-primary');
+  tel.href = 'tel:' + resume.contact.phone;
+  tel.innerHTML = ICONS.phone + '<span>拨打电话</span>';
+  const mail = el('button', 'btn btn-ghost');
+  mail.type = 'button';
+  mail.id = 'copyEmail';
+  mail.innerHTML = ICONS.mail + '<span>复制邮箱</span>';
+  const city = el('span', 'chip chip-line');
+  city.innerHTML = ICONS.pin + '<span>' + resume.contact.city + '</span>';
+  actions.appendChild(tel);
+  actions.appendChild(mail);
+  actions.appendChild(city);
+  const hex = el('div', 'hero-hex', '王');
+  hex.setAttribute('aria-hidden', 'true');
+  const printLine = el('p', 'print-only');
+  printLine.id = 'printContact';
+  [name, role, intro, badges, actions, hex, printLine].forEach(n => t.appendChild(n));
+  return t;
+}
+
+/* ================= ② 战绩卡（1 列） ================= */
+function buildStats(){
+  const t = tile('stats', '');
+  t.appendChild(kicker('02 // STATS'));
+  t.appendChild(title('核心战绩'));
+  resume.stats.forEach(st => {
+    const item = el('div', 'stat-item');
+    const r = el('div');
+    r.appendChild(el('span', 'stat-num g-text', st.num));
+    r.appendChild(el('span', 'stat-unit', st.unit));
+    item.appendChild(r);
+    item.appendChild(el('p', 'stat-text', st.text));
+    t.appendChild(item);
+  });
+  return t;
+}
+
+/* ================= ③ 主打项目卡（2 列） ================= */
+function buildFeatured(){
+  const t = tile('featured', 'col-2');
+  t.appendChild(kicker('03 // FEATURED PROJECT'));
+  t.appendChild(title(resume.featured.title));
+  const body = el('div', 'feat-body');
+  const info = el('div', 'feat-info');
+  const meta = el('div', 'feat-meta');
+  meta.appendChild(el('span', 'chip chip-gold', resume.featured.org));
+  meta.appendChild(el('span', 'chip chip-line mono', resume.featured.time));
+  info.appendChild(meta);
+  const chips = el('div', 'feat-chips');
+  resume.featured.chips.forEach(c => chips.appendChild(el('span', 'chip', c)));
+  info.appendChild(chips);
+  resume.featured.results.forEach(r => {
+    const row = el('div', 'feat-result');
+    row.innerHTML = ICONS.check;
+    row.appendChild(el('span', null, r));
+    info.appendChild(row);
+  });
+  const visual = el('div', 'feat-visual');
+  const blob = el('div', 'blob');
+  blob.innerHTML = ICONS[resume.featured.icon];
+  visual.appendChild(blob);
+  body.appendChild(info);
+  body.appendChild(visual);
+  t.appendChild(body);
+  return t;
+}
+
+/* ================= ④ 技能聚合卡（1 列） ================= */
+function buildSkills(){
+  const t = tile('skills', '');
+  t.appendChild(kicker('04 // SKILL STACK'));
+  t.appendChild(title('技能聚合'));
+  const g = el('div', 'skill-mini first', '通用能力');
+  t.appendChild(g);
+  const gc = el('div', 'feat-chips');
+  resume.skills.general.forEach(s => gc.appendChild(el('span', 'chip', s)));
+  t.appendChild(gc);
+  t.appendChild(el('div', 'skill-mini', '办公工具'));
+  const oc = el('div', 'feat-chips');
+  resume.skills.office.forEach(s => oc.appendChild(el('span', 'chip', s)));
+  t.appendChild(oc);
+  const note = el('div', 'skill-note');
+  note.innerHTML = ICONS.grad;
+  note.appendChild(el('span', null, resume.skills.note));
+  t.appendChild(note);
+  return t;
+}
+
+/* ================= ⑤ 经历卡（满行 3 列） ================= */
+function buildExperience(){
+  const t = tile('experience', 'col-3');
+  t.appendChild(kicker('05 // TIMELINE'));
+  t.appendChild(title('实践经历'));
+  const row = el('div', 'xp-row');
+  const rail = el('div', 'xp-rail');
+  rail.appendChild(el('div', null, resume.experience[0].time.split(' – ')[0] + '.07'));
+  rail.appendChild(el('div', 'dot'));
+  rail.appendChild(el('div', null, resume.experience[0].time.split(' – ')[1]));
+  const content = el('div', 'xp-content');
+  const head = el('div', 'xp-head');
+  head.appendChild(el('div', 'xp-role', resume.experience[0].role));
+  head.appendChild(el('span', 'xp-org', resume.experience[0].org));
+  head.appendChild(el('span', 'chip chip-line mono', resume.experience[0].time));
+  content.appendChild(head);
+  const ul = el('ul', 'xp-bullets');
+  resume.experience[0].bullets.forEach(b => {
+    const li = el('li');
+    li.innerHTML = ICONS.check;
+    li.appendChild(el('span', null, b));
+    ul.appendChild(li);
+  });
+  content.appendChild(ul);
+  row.appendChild(rail);
+  row.appendChild(content);
+  t.appendChild(row);
+  return t;
+}
+
+/* ================= ⑥⑦⑧ 教育 / MBTI / 爱好卡（1 列） ================= */
+function buildEducation(){
+  const t = tile('edu', '');
+  t.appendChild(kicker('06 // EDUCATION'));
+  t.appendChild(title('教育背景'));
+  t.appendChild(el('div', 'edu-school', resume.education.school));
+  t.appendChild(el('div', 'edu-major', resume.education.major));
+  t.appendChild(el('div', 'edu-time mono', resume.education.time));
+  const bd = el('div', 'edu-badges');
+  resume.education.badges.forEach(b => bd.appendChild(el('span', 'chip', b)));
+  t.appendChild(bd);
+  return t;
+}
+function buildMbti(){
+  const t = tile('mbti', '');
+  t.appendChild(kicker('07 // PERSONALITY'));
+  t.appendChild(title('性格特质'));
+  t.appendChild(el('div', 'mbti-big g-text', resume.personal.mbti));
+  t.appendChild(el('p', 'mbti-desc', resume.personal.mbtiDesc));
+  const chips = el('div', 'edu-badges');
+  resume.personal.traits.slice(0, 3).forEach(x => chips.appendChild(el('span', 'chip', x)));
+  t.appendChild(chips);
+  return t;
+}
+function buildHobbies(){
+  const t = tile('hobbies', '');
+  t.appendChild(kicker('08 // HOBBIES'));
+  t.appendChild(title('兴趣爱好'));
+  const chips = el('div', 'feat-chips');
+  resume.personal.hobbies.forEach(hb => {
+    const chip = el('span', 'chip');
+    chip.innerHTML = (ICONS[hb.icon] || '') + '<span>' + hb.name + '</span>';
+    chips.appendChild(chip);
+  });
+  t.appendChild(chips);
+  const extra = el('div', 'feat-chips');
+  extra.style.marginTop = '8px';
+  resume.personal.traits.forEach(x => extra.appendChild(el('span', 'chip chip-line', x)));
+  t.appendChild(extra);
+  return t;
+}
+
+/* ================= 页脚 ================= */
+function buildFooter(){
+  const f = $('#footer');
+  const hex = el('div', 'hex-sm', '王');
+  hex.setAttribute('aria-hidden', 'true');
+  f.appendChild(hex);
+  const p = el('p');
+  p.innerHTML = '© 2026 ' + resume.name + ' · GIVES YOU WINGS · 最后更新 ' + resume.updated + ' · 以 HTML / CSS / JS 手写构建';
+  f.appendChild(p);
+}
+
+/* ================= 渲染 ================= */
+const app = $('#app');
+const bento = el('div', 'bento');
+const tiles = [
+  buildHero(), buildStats(),
+  buildFeatured(), buildSkills(),
+  buildExperience(),
+  buildEducation(), buildMbti(), buildHobbies()
+];
+tiles.forEach((t, i) => {
+  t.classList.add('reveal');
+  t.style.transitionDelay = reducedMotion ? '0ms' : (i % 4) * 60 + 'ms';
+  bento.appendChild(t);
+});
+app.appendChild(bento);
+buildFooter();
+
+/* 打印联系方式（邮箱运行时拼接） */
+$('#printContact').textContent =
+  '联系方式：' + resume.contact.phone + ' ｜ ' + resume.contact.emailUser + '@' + resume.contact.emailDomain + ' ｜ ' + resume.contact.city;
+
+/* ================= 3D Tilt 引擎（Vanilla-Tilt 等价实现，读取 data-tilt 属性） ================= */
+function initTilt(card){
+  const max = parseFloat(card.getAttribute('data-tilt-max') || '6');
+  const speed = parseFloat(card.getAttribute('data-tilt-speed') || '400');
+  const hasGlare = card.hasAttribute('data-tilt-glare');
+  const glareMax = parseFloat(card.getAttribute('data-tilt-glare-max') || '0.3');
+  card.style.transition = 'transform ' + speed + 'ms cubic-bezier(.03,.98,.52,.99), box-shadow ' + speed + 'ms ease';
+  let glare = null;
+  if (hasGlare) {
+    glare = el('div', 'tilt-glare');
+    card.appendChild(glare);
+  }
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    const rx = (0.5 - py) * max * 2;
+    const ry = (px - 0.5) * max * 2;
+    card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+    if (glare) {
+      glare.style.background = 'radial-gradient(circle at ' + (px * 100).toFixed(1) + '% ' + (py * 100).toFixed(1) + '%, rgba(255,255,255,' + glareMax + '), transparent 65%)';
+    }
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+    if (glare) glare.style.background = 'transparent';
+  });
+}
+/* 移动端 / 触摸屏 / 减少动效 → 禁用 3D，回退为静态卡片 */
+if (!isTouch && !reducedMotion) {
+  document.querySelectorAll('[data-tilt]').forEach(initTilt);
+}
+
+/* ================= 邮箱复制（JS 拼接防爬虫） ================= */
+let toastTimer = null;
+function showToast(msg){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+function copyEmail(){
+  const email = resume.contact.emailUser + '@' + resume.contact.emailDomain;
+  const done = () => showToast('邮箱已复制：' + email);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(done).catch(() => fallbackCopy(email, done));
+  } else {
+    fallbackCopy(email, done);
+  }
+}
+function fallbackCopy(text, done){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) { showToast('复制失败，请手动输入邮箱'); }
+  ta.remove();
+}
+
+/* ================= 事件绑定 ================= */
+$('#copyEmail').addEventListener('click', copyEmail);
+$('#printBtn').addEventListener('click', () => window.print());
+
+const toTop = $('#toTop');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    toTop.classList.toggle('show', window.scrollY > 500);
+    ticking = false;
+  });
+}, { passive: true });
+toTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+});
+
+/* ================= 入场动效 ================= */
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('visible');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(r => io.observe(r));
+} else {
+  revealEls.forEach(r => r.classList.add('visible'));
+}
+</script>
+</body>
+</html>
