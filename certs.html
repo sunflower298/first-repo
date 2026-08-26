@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="王子睿 · AI 方向认证证书合集">
+<meta name="theme-color" content="#09090b">
+<title>王子睿｜证书合集</title>
+<style>
+/* ============ 设计令牌（与简历一致的 zinc 语义） ============ */
+:root{
+  --brand:#e10622;
+  --brand-2:#ffc90e;
+  --grad:linear-gradient(120deg,#e10622 0%,#ff5a00 50%,#ffc90e 100%);
+  --bg:#09090b;
+  --card:rgba(24,24,27,.9);
+  --card-line:#27272a;
+  --text:#fafafa;
+  --text-2:#a1a1aa;
+  --text-3:#71717a;
+  --ring:rgba(255,90,0,.55);
+  --mono:"SF Mono","Cascadia Code",Consolas,"JetBrains Mono",Menlo,monospace;
+  color-scheme:dark;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.75;font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(1000px 520px at 85% -10%,rgba(225,6,34,.13),transparent 60%),
+    radial-gradient(900px 520px at -10% 30%,rgba(255,201,14,.06),transparent 55%),
+    radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:auto,auto,26px 26px;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(225,6,34,.13);color:#ff8fa0}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ============ 顶部导航 ============ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:50;height:64px;
+  background:rgba(9,9,11,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--card-line);
+}
+.site-header::after{
+  content:'';position:absolute;left:0;right:0;bottom:-3px;height:3px;
+  background:var(--grad);opacity:.9;pointer-events:none;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:16px}
+.brand-hex{
+  width:34px;height:34px;clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%);
+  background:var(--grad);display:grid;place-items:center;color:#0a0f1e;
+  font-weight:800;font-size:16px;box-shadow:0 0 14px rgba(255,201,14,.4);
+}
+.brand small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--text-3);line-height:1.2;letter-spacing:.08em}
+.back{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:12px;
+  font-size:13.5px;font-weight:600;border:1px solid var(--card-line);background:var(--card);color:var(--text-2);
+  transition:color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.back:hover{color:var(--brand);border-color:var(--ring);transform:translateY(-1px)}
+.back svg{width:15px;height:15px}
+
+/* ============ 标题区 ============ */
+.hero{padding:120px 0 36px}
+.kicker{
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.18em;
+  color:var(--brand-2);text-transform:uppercase;margin-bottom:10px;
+  text-shadow:0 0 12px rgba(255,201,14,.4);
+}
+.hero h1{font-size:clamp(30px,4.5vw,44px);font-weight:900;letter-spacing:.01em}
+.hero .sub{color:var(--text-2);font-size:14px;margin-top:8px}
+
+/* ============ 证书画廊 ============ */
+.gallery{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;
+  padding-bottom:80px;
+}
+.cert{
+  background:var(--card);border:1px solid var(--card-line);border-radius:20px;
+  padding:14px;transition:transform .2s ease,box-shadow .2s ease;
+}
+.cert:hover{transform:translateY(-4px);box-shadow:0 18px 44px -16px rgba(0,0,0,.7)}
+.cert a{display:block;overflow:hidden;border-radius:12px}
+.cert img{
+  display:block;width:100%;height:auto;border-radius:12px;
+  transition:transform .3s ease;
+}
+.cert:hover img{transform:scale(1.03)}
+.cert-name{font-size:15px;font-weight:800;margin-top:14px}
+.cert-org{font-size:12.5px;color:var(--text-3);font-family:var(--mono);margin-top:2px}
+.cert-tip{font-size:12px;color:var(--brand-2);margin-top:6px}
+
+/* ============ 页脚 ============ */
+.site-footer{
+  border-top:1px solid var(--card-line);padding:40px 0 48px;text-align:center;
+  color:var(--text-3);font-size:13px;
+}
+.hex-sm{
+  width:40px;height:40px;clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%);
+  background:var(--grad);display:grid;place-items:center;color:#0a0f1e;
+  font-weight:800;font-size:16px;margin:0 auto 16px;box-shadow:0 0 16px rgba(255,201,14,.35);
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="返回简历">
+      <span class="brand-hex" aria-hidden="true">王</span>
+      <span>王子睿<small>证书合集 · CERTIFICATES</small></span>
+    </a>
+    <a class="back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>返回简历</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <div class="kicker">CERTIFICATES · 认证凭证</div>
+    <h1>证书合集</h1>
+    <p class="sub">王子睿 · AI 方向认证证书 · 共 5 张 · 点击图片可查看大图</p>
+  </section>
+
+  <section class="gallery container">
+    <figure class="cert">
+      <a href="img/cert1.jpg" target="_blank" rel="noopener">
+        <img src="img/cert1.jpg" alt="大模型开发工程师证书" loading="lazy">
+      </a>
+      <figcaption>
+        <div class="cert-name">大模型开发工程师</div>
+        <div class="cert-org">Datawhale &amp; 浪潮信息</div>
+        <div class="cert-tip">点击图片查看大图 ↗</div>
+      </figcaption>
+    </figure>
+
+    <figure class="cert">
+      <a href="img/cert2.jpg" target="_blank" rel="noopener">
+        <img src="img/cert2.jpg" alt="Prompt Engineer 证书" loading="lazy">
+      </a>
+      <figcaption>
+        <div class="cert-name">Prompt Engineer</div>
+        <div class="cert-org">讯飞星火 &amp; Datawhale</div>
+        <div class="cert-tip">点击图片查看大图 ↗</div>
+      </figcaption>
+    </figure>
+
+    <figure class="cert">
+      <a href="img/cert3.jpg" target="_blank" rel="noopener">
+        <img src="img/cert3.jpg" alt="AI+编程证书" loading="lazy">
+      </a>
+      <figcaption>
+        <div class="cert-name">AI+编程</div>
+        <div class="cert-org">Datawhale &amp; 豆包MarsCode</div>
+        <div class="cert-tip">点击图片查看大图 ↗</div>
+      </figcaption>
+    </figure>
+
+    <figure class="cert">
+      <a href="img/cert4.jpg" target="_blank" rel="noopener">
+        <img src="img/cert4.jpg" alt="人工智能训练师（高级）证书" loading="lazy">
+      </a>
+      <figcaption>
+        <div class="cert-name">人工智能训练师（高级）</div>
+        <div class="cert-org">阿里巴巴达摩院</div>
+        <div class="cert-tip">点击图片查看大图 ↗</div>
+      </figcaption>
+    </figure>
+
+    <figure class="cert">
+      <a href="img/cert5.jpg" target="_blank" rel="noopener">
+        <img src="img/cert5.jpg" alt="人工智能训练师（初级）证书" loading="lazy">
+      </a>
+      <figcaption>
+        <div class="cert-name">人工智能训练师（初级）</div>
+        <div class="cert-org">阿里巴巴达摩院</div>
+        <div class="cert-tip">点击图片查看大图 ↗</div>
+      </figcaption>
+    </figure>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="hex-sm" aria-hidden="true">王</div>
+  <p>© 2026 王子睿 · 证书合集 · 与个人简历联动展示</p>
+</footer>
+
+</body>
+</html>
