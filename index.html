@@ -244,6 +244,20 @@ svg{display:block}
 }
 .skill-note svg{flex:none;width:15px;height:15px;margin-top:4px;color:var(--brand)}
 
+/* ============ 专业技能卡（满行 3 列） ============ */
+.pro-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.pro-item{
+  border:1px solid var(--card-line);border-radius:14px;padding:18px 20px;
+  background:linear-gradient(135deg,rgba(225,6,34,.08),rgba(255,201,14,.05));
+}
+.pro-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.pro-head svg{flex:none;width:17px;height:17px;color:var(--brand)}
+.pro-name{font-size:15px;font-weight:800}
+.pro-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.pro-desc{font-size:13px;color:var(--text-2);text-align:justify}
+.pro-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+@media (max-width:760px){.pro-grid{grid-template-columns:1fr}}
+
 /* ============ 经历卡（满行 3 列） ============ */
 .xp-row{display:grid;grid-template-columns:150px 1fr;gap:26px;margin-top:18px}
 .xp-rail{position:relative;font-family:var(--mono);font-size:13px;color:var(--brand-2)}
@@ -394,7 +408,13 @@ const ICONS = {
   ball:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c4.2 4.2 4.2 13.8 0 18M12 3c-4.2 4.2-4.2 13.8 0 18"/></svg>',
   film:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 5v14M17 5v14M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>',
   flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h13l-3 4 3 4H4"/></svg>',
-  music:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>'
+  music:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+  cpu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>',
+  msg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  term:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg>',
+  sliders:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
+  game:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>'
 };
 
 /* ================= 简历数据（保留全部文字、数据与链接） ================= */
@@ -431,6 +451,36 @@ const resume = {
     office: ['Word', 'Excel', 'PowerPoint', '电子化台账'],
     note: '计算机科学与技术 · 本科一年级，程序设计基础等专业课程学习中，正在系统搭建个人技术栈。'
   },
+  proSkills: [
+    {
+      name: '大模型开发与工程化',
+      cert: '大模型开发工程师',
+      org: 'Datawhale & 浪潮信息',
+      icon: 'cpu',
+      desc: '熟悉 LLM（大语言模型）的开发流程、工程化部署及应用场景落地。'
+    },
+    {
+      name: '提示词工程 · Prompt Engineering',
+      cert: 'Prompt Engineer',
+      org: '讯飞星火 & Datawhale',
+      icon: 'msg',
+      desc: '精通提示词设计与优化技巧，能够高效引导大模型生成高质量内容，解决复杂交互问题。'
+    },
+    {
+      name: 'AI 辅助编程 · AI Coding',
+      cert: 'AI+编程',
+      org: 'Datawhale & 豆包MarsCode',
+      icon: 'term',
+      desc: '熟练运用 AI 工具辅助代码编写、调试与优化，显著提升软件开发效率。'
+    },
+    {
+      name: '人工智能训练与调优',
+      cert: '人工智能训练师（高级/初级）',
+      org: '阿里巴巴达摩院',
+      icon: 'sliders',
+      desc: '精通智能客服场景下的数据标注、模型训练及效果评估，具备从基础数据处理到高级对话逻辑优化的全流程能力。'
+    }
+  ],
   experience: [
     {
       role: '志愿服务人员',
@@ -607,10 +657,47 @@ function buildSkills(){
   return t;
 }
 
-/* ================= ⑤ 经历卡（满行 3 列） ================= */
+/* ================= ⑤ 专业技能卡（满行 3 列） ================= */
+function buildProSkills(){
+  const t = tile('proskills', 'col-3');
+  t.appendChild(kicker('05 // PROFESSIONAL SKILLS'));
+  t.appendChild(title('专业技能'));
+  const grid = el('div', 'pro-grid');
+  resume.proSkills.forEach(sk => {
+    const item = el('div', 'pro-item');
+    const head = el('div', 'pro-head');
+    head.innerHTML = ICONS[sk.icon] || ICONS.spark;
+    head.appendChild(el('span', 'pro-name', sk.name));
+    item.appendChild(head);
+    const meta = el('div', 'pro-meta');
+    meta.appendChild(el('span', 'chip chip-gold', sk.cert));
+    meta.appendChild(el('span', 'chip chip-line mono', sk.org));
+    item.appendChild(meta);
+    item.appendChild(el('p', 'pro-desc', sk.desc));
+    grid.appendChild(item);
+  });
+  t.appendChild(grid);
+  const links = el('div', 'pro-links');
+  const certs = el('a', 'btn btn-ghost');
+  certs.href = 'certs.html';
+  certs.target = '_blank';
+  certs.rel = 'noopener';
+  certs.innerHTML = ICONS.link + '<span>证书合集 · 点击查看</span>';
+  const tank = el('a', 'btn btn-ghost');
+  tank.href = 'tank.html';
+  tank.target = '_blank';
+  tank.rel = 'noopener';
+  tank.innerHTML = ICONS.game + '<span>坦克大战 · 网页游戏</span>';
+  links.appendChild(certs);
+  links.appendChild(tank);
+  t.appendChild(links);
+  return t;
+}
+
+/* ================= ⑥ 经历卡（满行 3 列） ================= */
 function buildExperience(){
   const t = tile('experience', 'col-3');
-  t.appendChild(kicker('05 // TIMELINE'));
+  t.appendChild(kicker('06 // TIMELINE'));
   t.appendChild(title('实践经历'));
   const row = el('div', 'xp-row');
   const rail = el('div', 'xp-rail');
@@ -637,10 +724,10 @@ function buildExperience(){
   return t;
 }
 
-/* ================= ⑥⑦⑧ 教育 / MBTI / 爱好卡（1 列） ================= */
+/* ================= ⑦⑧⑨ 教育 / MBTI / 爱好卡（1 列） ================= */
 function buildEducation(){
   const t = tile('edu', '');
-  t.appendChild(kicker('06 // EDUCATION'));
+  t.appendChild(kicker('07 // EDUCATION'));
   t.appendChild(title('教育背景'));
   t.appendChild(el('div', 'edu-school', resume.education.school));
   t.appendChild(el('div', 'edu-major', resume.education.major));
@@ -652,7 +739,7 @@ function buildEducation(){
 }
 function buildMbti(){
   const t = tile('mbti', '');
-  t.appendChild(kicker('07 // PERSONALITY'));
+  t.appendChild(kicker('08 // PERSONALITY'));
   t.appendChild(title('性格特质'));
   t.appendChild(el('div', 'mbti-big g-text', resume.personal.mbti));
   t.appendChild(el('p', 'mbti-desc', resume.personal.mbtiDesc));
@@ -663,7 +750,7 @@ function buildMbti(){
 }
 function buildHobbies(){
   const t = tile('hobbies', '');
-  t.appendChild(kicker('08 // HOBBIES'));
+  t.appendChild(kicker('09 // HOBBIES'));
   t.appendChild(title('兴趣爱好'));
   const chips = el('div', 'feat-chips');
   resume.personal.hobbies.forEach(hb => {
@@ -696,6 +783,7 @@ const bento = el('div', 'bento');
 const tiles = [
   buildHero(), buildStats(),
   buildFeatured(), buildSkills(),
+  buildProSkills(),
   buildExperience(),
   buildEducation(), buildMbti(), buildHobbies()
 ];
